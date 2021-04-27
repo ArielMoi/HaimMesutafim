@@ -5,7 +5,6 @@ import Input from './components/Input'
 import './app.css';
 
 function App() {
-
   const [currentData, setCurrentData] = useState({});
   const [saved, setSaved] = useState([]);
 
@@ -35,6 +34,7 @@ function App() {
             <Box/>
           </Route>
 
+          <Input/>
       </Router>
     </div>
   );

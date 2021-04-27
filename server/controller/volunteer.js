@@ -1,23 +1,23 @@
-const volunteerMOdel = require("../model/Volunteer.model");
-const scriping = require("../scraping/scraper");
+const volunteerMOdel=require('../model/Volunteer.model')
+const scriping=require('../scraping/scraper')
 const getAll = async (req, res) => {
-  try {
-    const data = await volunteerMOdel.find();
-    return res.status(200).json({ success: data });
-  } catch (error) {
-    return res.status(400).json({ err: error });
-  }
+try {
+  const data =await volunteerMOdel.find()
+  return res.status(200).json({"success":data})
+} catch (error) {
+  return res.status(400).json({"err":error})
+}
 };
 
-const addVolun = async (req, res) => {
-  const { url } = req.body;
+const addVolun=async(req,res)=>{
+  const {url}=req.body
 
-  if (!url.includes("https://www.ruachtova.org.il/projects/")) {
-    return res.send("wrong url");
+  if(!url.includes('https://www.ruachtova.org.il/projects/')){
+    return res.send('wrong url')
   }
 
-  const data = await scriping(url);
-  res.send(data);
+const data=await scriping(url)
+res.send(data)
 
   // const val=new volunteerMOdel({
   //   /*
@@ -37,10 +37,11 @@ const addVolun = async (req, res) => {
   //   const data = await val.save()
   //   res.status(200).json(data)
   // } catch (error) {
-  //   res.status(400).json(error)
+
+  //   res.status(400).json(error) 
   // }
-};
+}
 module.exports = {
-  getAll,
-  addVolun,
-};
+  getAll ,
+  addVolun
+  };
