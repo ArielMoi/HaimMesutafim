@@ -37,6 +37,6 @@ const collectingPageData = async (url) => {
   }
 };
 
-collectingPageData("https://www.ruachtova.org.il/projects/101238").then(res => console.log(res))
+//collectingPageData("https://www.ruachtova.org.il/projects/101238").then(res => console.log(res))
 
 module.exports = collectingPageData;
