@@ -6,7 +6,7 @@ function Input( {states} ) {
   const { setCurrentData, addToSaved } = states;
   const getUrl = async () => {
     try {
-      await setCurrentData(null);
+      if (search !== ) await setCurrentData(null);
       const data = await axios.post("http://localhost:5000/add", {
         url: search,
       });
