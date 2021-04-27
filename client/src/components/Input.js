@@ -1,7 +1,4 @@
-<<<<<<< Updated upstream
-=======
-  
->>>>>>> Stashed changes
+
 import React, { useState } from 'react'
 
 function Input() {
@@ -14,8 +11,4 @@ function Input() {
     )
 }
 
-<<<<<<< Updated upstream
 export default Input
-=======
-export default Input
->>>>>>> Stashed changes
