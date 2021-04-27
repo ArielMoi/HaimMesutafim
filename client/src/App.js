@@ -1,26 +1,30 @@
 import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom';
 import Nav from './components/Nav';
+import Box from './components/Box';
 import './app.css';
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <Switch>
+
           <Nav/>
-          <Route path="/">
+          <Route path="/" exact>
 
           </Route>
 
-          <Route path="/history">
+          <Route path="/history" exact>
 
           </Route>
 
-          <Route path="/details/:id">
-
+          <Route path="/details/:id" exact>
+            
           </Route>
 
-        </Switch>
+          <Route path="/box" exact>
+            <Box/>
+          </Route>
+
       </Router>
     </div>
   );
