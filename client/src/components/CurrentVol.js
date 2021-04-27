@@ -7,8 +7,8 @@ function CurrentVol({data}) {
         <div className="CurrentVol-contianer">
             <img src={data.img} alt="img"/>
             <div className="CurrentVol_eng">
-                <h1>{data.title}</h1>
-                <p>{data.description}</p>
+                <h1>{data.title.heb}</h1>
+                <p>{data.description.heb}</p>
                 <a href={data.url} target="_blank" rel="noreferrer">לפרטים נוספים</a>
             </div>
             {/* <div className="CurrentVol_arb">

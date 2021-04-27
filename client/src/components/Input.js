@@ -3,7 +3,6 @@ import axios from 'axios';
 
 function Input( {states} ) {
   const [search, setSearch] = useState("");
-  console.log(states);
   const { setCurrentData, addToSaved } = states;
   const getUrl = async () => {
     try {
@@ -12,7 +11,7 @@ function Input( {states} ) {
       });
       setCurrentData(data.data);
       addToSaved(data.data);
-      
+
     } catch (e) {
       console.log("error");
     }

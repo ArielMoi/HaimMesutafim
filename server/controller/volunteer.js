@@ -18,7 +18,7 @@ const addVolun=async(req,res)=>{
 
 try {
   const findurl=await volunteerMOdel.findOne({url})
-  if(findurl) return res.status(200).send({"data":findurl})
+  if(findurl) return res.status(200).send(findurl);
 } catch (error) {
   return res.send(error)
 }
