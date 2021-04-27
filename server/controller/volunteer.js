@@ -27,7 +27,6 @@ try {
 const data=await scriping(url)
 //res.send(data)
   const {img,title,description}=data
-
   const val= new volunteerMOdel({
     url,
     img,
