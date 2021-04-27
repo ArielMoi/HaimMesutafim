@@ -5,7 +5,7 @@ const volunteerController = require('../controller/volunteer');
 router.get('/getall', (req,res)=>{
   volunteerController.getAll(req,res)
 })
-.get('/get:id',(req,res)=>{
+.get('/get/:id',(req,res)=>{
 
 })
 .post('/add', (req,res)=>{

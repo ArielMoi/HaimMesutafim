@@ -1,5 +1,6 @@
 const mongoose=require('mongoose')
-const url='mongodb+srv://foadal:foadal@cluster0.eeziv.mongodb.net/volunteer?retryWrites=true&w=majority'
+//const url='mongodb+srv://foadal:foadal@cluster0.eeziv.mongodb.net/volunteer?retryWrites=true&w=majority'
+const url="mongodb://34.223.221.189"
 const connectionParams={
     useNewUrlParser: true,
     useCreateIndex: true,

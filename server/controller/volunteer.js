@@ -16,30 +16,37 @@ const addVolun=async(req,res)=>{
     return res.send('wrong url')
   }
 
+try {
+  const findurl=await volunteerMOdel.findOne({url})
+  if(findurl) return res.status(200).send({"data":findurl})
+} catch (error) {
+  return res.send(error)
+}
+ 
+
 const data=await scriping(url)
-res.send(data)
-
-  // const val=new volunteerMOdel({
-  //   /*
-  //   url:'https://www.ruachtova.org.il/projects/21203',
-  //   "img":"url.img"
-  //   "title.end":"test",
-  //   "title.arb":"تجربه",
-  //   "title.heb":"בְּדִיקָה",
-  //   "description.end":"my description",
-  //   "description.heb":"התיאור שלי",
-  //   "description.arb":"وصفي"
-  //   */
-
-  //  obj
-  // })
-  // try {
-  //   const data = await val.save()
-  //   res.status(200).json(data)
-  // } catch (error) {
-
-  //   res.status(400).json(error) 
-  // }
+//res.send(data)
+  const {img,title,description}=data
+  const val= new volunteerMOdel({
+    url,
+    img,
+    title:{
+      heb:title,
+      arb:null,
+      eng:null
+    },
+    description:{
+      heb:description,
+      arb:null,
+      eng:null
+    }
+  })
+  try {
+    const data = await val.save()
+    res.status(200).json(data)
+  } catch (error) {
+    res.status(400).json(error) 
+  }
 }
 module.exports = {
   getAll ,

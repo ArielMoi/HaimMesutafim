@@ -11,18 +11,18 @@ const collectingPageData = async (url) => {
       waitUntil: "networkidle0",
     });
     const header = await page.evaluate(
-      () => document.querySelector("h1").innerText.split('').reverse().join('')
+      () => document.querySelector("h1").innerText
     );
     const imgSrc = await page.evaluate(
       () => document.querySelector(".project-content img").src
     );
+    
     const description = await page.evaluate(() =>
-      document
-        .querySelector(".project-content p")
-        .innerText.split("")
-        .reverse()
-        .join("")
-    );
+    document
+      .querySelector(".project-content p")
+      .innerText
+  );
+
 
     await browser.close();
 
