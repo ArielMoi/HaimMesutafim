@@ -6,6 +6,7 @@ function Input( {states} ) {
   const { setCurrentData, addToSaved } = states;
   const getUrl = async () => {
     try {
+      await setCurrentData(null);
       const data = await axios.post("http://localhost:5000/add", {
         url: search,
       });
@@ -26,7 +27,7 @@ function Input( {states} ) {
           setSearch(volunteer.target.value);
         }}
       />
-      <button type="button" onClick={getUrl}>
+      <button onClick={getUrl}>
         Search
       </button>
     </div>

@@ -18,6 +18,9 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <div className="logo">
+          <img src="./assets/logo.png" alt="logo"/>
+        </div>
         <Nav />
         {/* {redirect ? <Redirect to={redirect}/> : null} */}
         <Route path="/" exact>

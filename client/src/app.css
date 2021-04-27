@@ -5,30 +5,39 @@
   margin: 0;
   padding: 0;
   font-family: "Rubik", sans-serif;
+  color: #3b4252;
 }
+body {
+  background: #f4f5f8;
+}
+
 a {
   text-decoration: none;
   color: unset;
 }
 .nav a {
-  background: goldenrod;
-  padding: 5px 12px;
-  border-radius: 12px;
+  padding: 11px 20px;
+  background: #d32637;
+  /* border-radius: 12px; */
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   color: black;
+  transition: 0.4s all;
+}
+.nav a:hover {
+  background: #e26874;
 }
 
 .nav-container {
   display: flex;
   justify-content: center;
-  background: #d3cfcf;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  margin-bottom: 30px;
 }
 
 .nav {
   display: flex;
   justify-content: space-around;
   width: 50%;
-  padding: 0.5rem;
 }
 
 .box {
@@ -54,8 +63,15 @@ a {
 
 .Input-contianer input {
   margin-right: 10px;
-  padding: 5px 2px;
+  padding: 5px 10px;
   width: 300px;
+  outline: none;
+  border: 1px solid gray;
+}
+
+.Input-contianer input:focus {
+  outline: none;
+  border: 1px solid #d32637;
 }
 
 .Input-contianer button {
@@ -69,6 +85,7 @@ a {
   margin: 13px auto 0 auto;
   text-align: right;
   border: 1px solid black;
+  margin-bottom: 3rem;
 }
 
 .CurrentVol-contianer p {
@@ -103,4 +120,34 @@ a {
   display: grid;
   margin: 0 auto;
   grid-template-columns: repeat(3, 1fr);
+}
+
+.logo {
+  margin: 0 auto;
+  padding: 2rem 0 4rem 0;
+}
+
+.logo img {
+  display: block;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.slide-in-blurred-bottom {
+  animation: slide-in-blurred-bottom 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+@keyframes slide-in-blurred-bottom {
+  0% {
+    transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
+    transform-origin: 50% 100%;
+    filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scaleY(1) scaleX(1);
+    transform-origin: 50% 50%;
+    filter: blur(0);
+    opacity: 1;
+  }
 }
