@@ -1,7 +1,12 @@
 const volunteerMOdel=require('../model/Volunteer.model')
 
-const getAll = (req, res) => {
-
+const getAll = async (req, res) => {
+try {
+  const data =await volunteerMOdel.find()
+  return res.status(200).json({"success":data})
+} catch (error) {
+  return res.status(400).json({"err":error})
+}
 };
 
 const addVolun=async(req,res)=>{
@@ -22,6 +27,7 @@ const addVolun=async(req,res)=>{
     "description.heb":"התיאור שלי",
     "description.arb":"وصفي"
     */
+
    obj
   })
   try {
@@ -30,7 +36,6 @@ const addVolun=async(req,res)=>{
   } catch (error) {
     res.status(400).json(error) 
   }
-
 }
 module.exports = {
   getAll ,
