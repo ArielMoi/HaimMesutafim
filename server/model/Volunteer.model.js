@@ -30,6 +30,10 @@ const volunteerSchema=mongoose.Schema({
     heb:{
       type:String
     }
+  },
+  isTranslated: {
+    type: Boolean,
+    default: false
   }
 })
 
