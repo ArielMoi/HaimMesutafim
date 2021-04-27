@@ -1,6 +1,6 @@
 const volunteerMOdel=require('../model/Volunteer.model')
 
-const getAll =async (req, res) => {
+const getAll = async (req, res) => {
 try {
   const data =await volunteerMOdel.find()
   return res.status(200).json({"success":data})
@@ -27,7 +27,8 @@ const addVolun=async(req,res)=>{
     "description.heb":"התיאור שלי",
     "description.arb":"وصفي"
     */
-    obj
+
+   obj
   })
   try {
     const data = await val.save()
