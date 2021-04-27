@@ -1,11 +1,13 @@
+import React, { useState } from 'react'
 import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom';
 import Nav from './components/Nav';
-import Box from './components/Box';
-import Input from './components/Input'
+import Input from './components/Input';
+import CurrentVol from './components/CurrentVol';
+import Card from './components/Card';
 import './app.css';
 
 function App() {
-  const [currentData, setCurrentData] = useState({});
+  const [currentData, setCurrentData] = useState(null);
   const [saved, setSaved] = useState([]);
 
   const addToSaved = (newSave) => {
@@ -14,27 +16,23 @@ function App() {
 
   return (
     <div className="App">
-      <Input/>
       <Router>
+        <Nav />
+        <Route path="/" exact>
+          <Input states={{ setCurrentData, setSaved, addToSaved }} />
+          {currentData ? <CurrentVol data={currentData} /> : null}
+        </Route>
 
-          <Nav/>
-          <Route path="/" exact>
+        <Route path="/history" exact>
+          {setSaved.length
+            ? saved.map((item, index) => {
+                return <Card item={item} key={index} />;
+              })
+            : null}
+        </Route>
+        <Route path="/details/:id" exact>
 
-          </Route>
-
-          <Route path="/history" exact>
-
-          </Route>
-
-          <Route path="/details/:id" exact>
-            
-          </Route>
-
-          <Route path="/box" exact>
-            <Box/>
-          </Route>
-
-          <Input/>
+        </Route>
       </Router>
     </div>
   );
