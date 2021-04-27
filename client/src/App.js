@@ -5,8 +5,16 @@ import Input from './components/Input'
 import './app.css';
 
 function App() {
+  const [currentData, setCurrentData] = useState({});
+  const [saved, setSaved] = useState([]);
+
+  const addToSaved = (newSave) => {
+    setSaved([...saved, newSave]);
+  }
+
   return (
     <div className="App">
+      <Input/>
       <Router>
 
           <Nav/>
@@ -25,7 +33,6 @@ function App() {
           <Route path="/box" exact>
             <Box/>
           </Route>
-
 
           <Input/>
       </Router>
