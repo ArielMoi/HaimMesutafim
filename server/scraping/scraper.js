@@ -1,7 +1,5 @@
 const puppeteer = require("puppeteer");
 
-// "https://www.ruachtova.org.il/projects/101238";
-
 const collectingPageData = async (url) => {
   try {
     const browser = await puppeteer.launch();
@@ -37,6 +35,43 @@ const collectingPageData = async (url) => {
   }
 };
 
-//collectingPageData("https://www.ruachtova.org.il/projects/101238").then(res => console.log(res))
 
-module.exports = collectingPageData;
+const collectingDataHeaders = async (url) => {
+  try {
+    const browser = await puppeteer.launch();
+    const [page] = await browser.pages();
+
+    await page.goto(url, {
+      waitUntil: "networkidle0",
+    });
+
+    const textHeaders = await page.evaluate(() =>
+      [...document.querySelectorAll(".paging-wrapper .box-project h3")].map(
+        ({ innerText }) => innerText
+      )
+    );
+
+    const href = await page.evaluate(() =>
+      [...document.querySelectorAll(".paging-wrapper .box-project a")].map(
+        (a) => a.attributes.href.value
+      )
+    );
+
+    const data = {};
+
+    let num = 0;
+    textHeaders.forEach((header) => {
+      href[num] !== "#" ? (data[header] = href[num++]) : num++;
+    });
+
+    // console.log(data);
+    await browser.close();
+
+    return data;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+module.exports = {collectingPageData, collectingDataHeaders};
+
