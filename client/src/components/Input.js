@@ -7,6 +7,7 @@ function Input() {
     return (
         <div className="Input-contianer">
              <input type="text" placeholder="Enter volunteer link here" onChange={volunteer => { setSearch(volunteer.target.value)}}/>
+            <input type="submit">Search</input>
         </div>
     )
 }
