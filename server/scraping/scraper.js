@@ -35,7 +35,6 @@ const collectingPageData = async (url) => {
   }
 };
 
-
 const collectingDataHeaders = async (url) => {
   try {
     const browser = await puppeteer.launch();
@@ -45,27 +44,37 @@ const collectingDataHeaders = async (url) => {
       waitUntil: "networkidle0",
     });
 
-    const textHeaders = await page.evaluate(() =>
-      [...document.querySelectorAll(".paging-wrapper .box-project h3")].map(
-        ({ innerText }) => innerText
+    const imgs = await page.evaluate(() =>
+      [...document.querySelectorAll(".paging-wrapper .box-project a img")].map(
+        (img) => img.src
       )
     );
 
-    const href = await page.evaluate(() =>
-      [...document.querySelectorAll(".paging-wrapper .box-project a")].map(
-        (a) => a.attributes.href.value
+    const textHeaders = await page.evaluate(() =>
+      [...document.querySelectorAll(".paging-wrapper .col-xs-12 a img")].map(
+        (a) => a.alt
       )
     );
+
+    let href = await page.evaluate(() =>
+      [...document.querySelectorAll(".paging-wrapper .col-xs-12")].map((a) =>
+        a.getAttribute("data-me")
+      )
+    );
+
+    href = href.filter((h) => h !== null);
 
     const data = {};
 
     let num = 0;
     textHeaders.forEach((header) => {
-      href[num] !== "#" ? (data[header] = href[num++]) : num++;
+      href[num] !== "#" ? (data[header] = [imgs[num], href[num]]) : num++; // to not added not relevent links
+      num++;
     });
 
     // console.log(data);
     await browser.close();
+    
 
     return data;
   } catch (err) {
@@ -74,4 +83,3 @@ const collectingDataHeaders = async (url) => {
 };
 
 module.exports = {collectingPageData, collectingDataHeaders};
-
