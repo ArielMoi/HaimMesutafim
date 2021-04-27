@@ -3,7 +3,7 @@ const volunteerMOdel=require('../model/Volunteer.model')
 const getAll =async (req, res) => {
 try {
   const data =await volunteerMOdel.find()
-  return res.status(200).json("success:")
+  return res.status(200).json({"success":data})
 } catch (error) {
   return res.status(400).json({"err":error})
 }
