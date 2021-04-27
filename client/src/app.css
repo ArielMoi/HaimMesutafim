@@ -88,10 +88,19 @@ a {
 .card {
   max-width: 250px;
   display: inline-block;
+  text-align: right;
+  margin: 0 auto;
 }
 .card img {
   max-width: 250px;
   max-height: 167px;
   object-fit: contain;
   display: inline-block;
+}
+
+.grid {
+  padding-top: 25px;
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns: repeat(3, 1fr);
 }
