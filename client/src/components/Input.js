@@ -6,13 +6,12 @@ function Input( {states} ) {
   const { setCurrentData, addToSaved } = states;
   const getUrl = async () => {
     try {
-      if (search !== ) await setCurrentData(null);
+      // if (search !== ) await setCurrentData(null);
       const data = await axios.post("http://localhost:5000/add", {
         url: search,
       });
       setCurrentData(data.data);
       addToSaved(data.data);
-
     } catch (e) {
       console.log("error");
     }

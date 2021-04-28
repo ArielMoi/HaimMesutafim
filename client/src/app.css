@@ -107,12 +107,28 @@ a {
   display: inline-block;
   text-align: right;
   margin: 0 auto;
+  position: relative;
 }
 .card img {
-  max-width: 250px;
-  max-height: 167px;
+  width: 100%;
   object-fit: contain;
   display: inline-block;
+  margin: 0 auto;
+}
+
+.card .button {
+  background: #3b425288;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.card svg {
+  width: 30px;
+  cursor: pointer;
+  fill: #ffffff;
 }
 
 .grid {
@@ -120,6 +136,7 @@ a {
   display: grid;
   margin: 0 auto;
   grid-template-columns: repeat(3, 1fr);
+  direction: rtl;
 }
 
 .logo {

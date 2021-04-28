@@ -1,5 +1,8 @@
 const volunteerMOdel=require('../model/Volunteer.model')
-const scriping=require('../scraping/scraper')
+const {
+  collectingPageData,
+  collectingDataHeaders,
+} = require("../scraping/scraper");
 const getAll = async (req, res) => {
 try {
   const data =await volunteerMOdel.find()
@@ -24,7 +27,7 @@ try {
 }
  
 
-const data=await scriping(url)
+const data = await collectingPageData(url);
 //res.send(data)
   const {img,title,description}=data
   const val= new volunteerMOdel({

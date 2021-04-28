@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route, NavLink, Switch, Redirect } from 'react-router-dom';
 import Nav from './components/Nav';
 import Input from './components/Input';
@@ -15,6 +15,12 @@ function App() {
     setSaved([...saved, newSave]);
   }
 
+  useEffect(() => {
+    if (redirect === '/') {
+      setTimeout(() => setRedirect(null), 500);
+    }
+  }, [redirect]);
+
   return (
     <div className="App">
       <Router>
@@ -22,7 +28,7 @@ function App() {
           <img src="./assets/logo.png" alt="logo"/>
         </div>
         <Nav />
-        {/* {redirect ? <Redirect to={redirect}/> : null} */}
+        {redirect ? <Redirect to={redirect}/> : null}
         <Route path="/" exact>
           <Input states={{ setCurrentData, setSaved, addToSaved }} />
           {currentData ? <CurrentVol data={currentData} /> : null}
@@ -35,8 +41,9 @@ function App() {
                 return <Card item={item} key={index} onClick={() => {
                   const newSaved = saved.filter(i => item !== i);
                   setSaved(newSaved);
-                  // setCurrentData(item);
-                  // setRedirect('/');
+                }} onView={() => {
+                  setCurrentData(item);
+                  setRedirect('/');
                 }} />;
               })
             : null}
