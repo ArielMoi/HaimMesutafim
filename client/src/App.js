@@ -5,6 +5,7 @@ import Input from './components/Input';
 import CurrentVol from './components/CurrentVol';
 import Card from './components/Card';
 import './app.css';
+import Feed from './components/Feed'
 
 function App() {
   const [currentData, setCurrentData] = useState(null);
@@ -49,8 +50,8 @@ function App() {
             : null}
           </div>
         </Route>
-        <Route path="/details/:id" exact>
-
+        <Route path="/details/" exact>
+              <Feed />
         </Route>
       </Router>
     </div>

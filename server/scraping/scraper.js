@@ -68,13 +68,12 @@ const collectingDataHeaders = async (url) => {
 
     let num = 0;
     textHeaders.forEach((header) => {
-      href[num] !== "#" ? (data[header] = [imgs[num], href[num]]) : num++; // to not added not relevent links
+      href[num] !== "#" ? (data[header] = [imgs[num], href[num]]) : num++; // prevents adding irrelevant data.
       num++;
     });
 
     // console.log(data);
     await browser.close();
-    
 
     return data;
   } catch (err) {
